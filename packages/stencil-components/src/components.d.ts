@@ -12,6 +12,9 @@ import '@stencil/core';
 
 export namespace Components {
 
+  interface EfCarousel {}
+  interface EfCarouselAttributes extends StencilHTMLAttributes {}
+
   interface FancyButton {
     'text': string;
   }
@@ -51,15 +54,23 @@ export namespace Components {
 
 declare global {
   interface StencilElementInterfaces {
+    'EfCarousel': Components.EfCarousel;
     'FancyButton': Components.FancyButton;
     'MyComponent': Components.MyComponent;
   }
 
   interface StencilIntrinsicElements {
+    'ef-carousel': Components.EfCarouselAttributes;
     'fancy-button': Components.FancyButtonAttributes;
     'my-component': Components.MyComponentAttributes;
   }
 
+
+  interface HTMLEfCarouselElement extends Components.EfCarousel, HTMLStencilElement {}
+  var HTMLEfCarouselElement: {
+    prototype: HTMLEfCarouselElement;
+    new (): HTMLEfCarouselElement;
+  };
 
   interface HTMLFancyButtonElement extends Components.FancyButton, HTMLStencilElement {}
   var HTMLFancyButtonElement: {
@@ -74,11 +85,13 @@ declare global {
   };
 
   interface HTMLElementTagNameMap {
+    'ef-carousel': HTMLEfCarouselElement
     'fancy-button': HTMLFancyButtonElement
     'my-component': HTMLMyComponentElement
   }
 
   interface ElementTagNameMap {
+    'ef-carousel': HTMLEfCarouselElement;
     'fancy-button': HTMLFancyButtonElement;
     'my-component': HTMLMyComponentElement;
   }
